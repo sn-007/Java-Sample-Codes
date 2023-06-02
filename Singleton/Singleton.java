@@ -1,14 +1,16 @@
 public class ConfigurationManager {
+    
     private static ConfigurationManager instance;
     private Properties configuration;
-
-    int data;
+    private int data;
 
     private ConfigurationManager() {
-        // Load configuration properties from local storage
-        //configuration = new Properties();
-
         
+        //generate a random number for data
+        data = (int) (Math.random() * 100);
+        // ideally we are supposed to Load configuration properties from local storage
+        configuration = new Properties();
+        print("ConfigurationManager instance created");
     }
 
     public static synchronized ConfigurationManager getInstance() {
@@ -25,6 +27,9 @@ public class ConfigurationManager {
 
     public void setProperty(String key, String value) {
         configuration.setProperty(key, value);
+    }
 
+    public int getData() {
+        return data;
     }
 }
